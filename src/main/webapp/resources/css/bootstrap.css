@@ -9,6 +9,41 @@
   position: absolute;
   top: 25px;
 }
+form .ng-invalid-required.ng-dirty {
+  background-color: lightpink;
+}
+
+form .ng-invalid-email.ng-dirty {
+  background-color: lightgoldenrodyellow;
+}
+
+form .ng-invalid-pattern.ng-dirty {
+  background-color: lightgoldenrodyellow;
+}
+form .ng-invalid-maxlength.ng-dirty {
+  background-color: lightpink;
+}
+form .ng-invalid-minlength.ng-dirty {
+  background-color: lightpink;
+}
+
+form .ng-valid.ng-dirty {
+  background-color: lightgreen;
+}
+
+span.summary.ng-invalid {
+  color: red;
+  font-weight: bold;
+}
+
+span.summary.ng-valid {
+  color: green;
+}
+
+div.error {
+  color: red;
+  font-weight: bold;
+}
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;

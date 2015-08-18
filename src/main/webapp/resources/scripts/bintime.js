@@ -20,4 +20,17 @@ var app = angular.module("App", []);
                 $log.debug($scope.data);
             })
         };
+        $scope.getError = function (error) {
+            if (angular.isDefined(error)) {
+                if (error.required) {
+                    return "Cannot be empty!";
+                } if (error.pattern){
+                    return "Pattern";
+                } if (error.maxlength){
+                    return "Max length"
+                } if (error.minlength){
+                    return "Min length"
+                }
+            }
+        };
     });

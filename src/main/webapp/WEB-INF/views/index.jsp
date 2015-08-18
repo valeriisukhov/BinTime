@@ -14,14 +14,23 @@
 	</div>
 	<div class="panel">
 		<div class="input-group">
+			<form name="frm" novalidate>
 			<div class="col-lg-4">
 				<label for="mpn">MPN:</label>
 				<input id="mpn"
 					   type="text"
+					   required
+					   ng-minlength="3"
+					   name="mpn"
+					   placeholder="SA-#KP"
 					   class="form-control ng-pristine ng-valid ng-touched"
 					   ng-model="mpn"
 					   ng-keyup="$event.keyCode == 13 ? update() : null">
+				<div class="error" ng-show="frm.mpn.$invalid && frm.mpn.$dirty">
+					{{getError(frm.mpn.$error)}}
+				</div>
 			</div>
+
 			<div class="col-lg-3">
 				<label for="sel1">Select list:</label>
 				<select class="form-control" id="sel1" ng-model="available">
@@ -44,9 +53,13 @@
 						value="${_csrf.token}"/></div>
 			<div class="col-lg-2">
 				<span class="input-btn">
-				<button class="btn btn-default" id="sendButton" ng-click="update()">Send</button>
+				<button class="btn btn-default"
+						id="sendButton"
+						ng-click="update()"
+						ng-disabled="frm.$invalid">Send</button>
 			</span>
 			</div>
+			</form>
 		</div>
 		<table class="table table-hover">
 			<thead>
