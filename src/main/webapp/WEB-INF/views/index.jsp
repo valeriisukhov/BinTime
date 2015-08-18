@@ -80,6 +80,7 @@
 						<li>Available: {{item.available}}</li>
 					</ul>
 				</td>
+				<div ng-show="data.status=='ERROR'" id="searchError"><b>No such Element!</b></div>
 			</tr>
 			</tbody>
 		</table>
