@@ -178,4 +178,10 @@ public class RedisService {
         return result;
     }
 
+    public void flush(){
+        Jedis jedis = this.getClient();
+        jedis.flushAll();
+        this.returnClient(jedis);
+    }
+
 }

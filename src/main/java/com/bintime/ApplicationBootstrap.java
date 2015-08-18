@@ -49,8 +49,8 @@ public class ApplicationBootstrap implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         if (db.contains("create")){
             initUsers();
+            initProducts();
         }
-        initProducts();
     }
 
     /**
@@ -84,6 +84,7 @@ public class ApplicationBootstrap implements InitializingBean {
     }
 
     public void initProducts(){
+        redisService.flush();
         Offer offer1 = new Offer();
         offer1.setPrice(100.0);
         offer1.setAvailable(1);
