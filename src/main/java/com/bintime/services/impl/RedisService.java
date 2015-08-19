@@ -35,15 +35,15 @@ public class RedisService {
     private static final String OFFER_KEY = "offer:";
     private static final String PRODUCT_KEY = "product:";
 
-    private static JedisPool jedisPool;
+    private JedisPool jedisPool;
 
     @PostConstruct
     public void initJedisPool(){
-        GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+        /*GenericObjectPoolConfig config = new GenericObjectPoolConfig();
         config.setMaxTotal(64);
         config.setMaxIdle(63);
         config.setMinIdle(1);
-        jedisPool = new JedisPool(config,redisHost,redisPort, 2000, redisPass);
+        jedisPool = new JedisPool(config,redisHost,redisPort, 2000, redisPass);*/
     }
 
     public Jedis getClient(){

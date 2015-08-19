@@ -19,21 +19,15 @@ public class HomeController extends BaseController{
 
     /**
      * Entry point, first view controller
-     *
-     * @param model UI {@link Model}
      * @return /WEB-INF/views/index.jsp
      */
 	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
-	public String home(HttpServletRequest request,
-                       HttpServletResponse response,
-                       Model model) {
+	public String home() {
         return "index";
 	}
 
     @RequestMapping(value = {"/about"}, method = RequestMethod.GET)
-    public String about(HttpServletRequest request,
-                       HttpServletResponse response,
-                       Model model) {
+    public String about() {
         return "about";
     }
 

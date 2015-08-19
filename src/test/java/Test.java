@@ -2,6 +2,7 @@ import com.bintime.dto.bintime.Offer;
 import com.bintime.dto.bintime.Product;
 import com.bintime.services.impl.RedisService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,6 +21,7 @@ public class Test {
     @Autowired
     private RedisService redisService;
 
+    @Ignore
     @org.junit.Test
     public void test(){
         Offer offer1 = new Offer();
