@@ -42,19 +42,15 @@ public class RedisService {
     private static JedisPool jedisPool;
 
     @PostConstruct
-    public void initJedisPool(){
+    public void initJedisPool() throws Exception{
         /*GenericObjectPoolConfig config = new GenericObjectPoolConfig();
         config.setMaxTotal(64);
         config.setMaxIdle(63);
         config.setMinIdle(1);
         jedisPool = new JedisPool(config,redisHost,redisPort, 2000, redisPass);*/
-        try {
-            URI redisURI = new URI(System.getenv("REDISTOGO_URL"));
-            jedisPool = new JedisPool(new JedisPoolConfig(), redisURI.getHost(),
-                    redisURI.getPort(), Protocol.DEFAULT_TIMEOUT, redisURI.getUserInfo().split(":", 2)[1]);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        URI redisURI = new URI(System.getenv("REDISCLOUD_URL"));
+        jedisPool = new JedisPool(new JedisPoolConfig(), redisURI.getHost(),
+                redisURI.getPort(), Protocol.DEFAULT_TIMEOUT, redisURI.getUserInfo().split(":", 2)[1]);
 
     }
 
