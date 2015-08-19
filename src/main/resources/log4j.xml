@@ -9,9 +9,6 @@
 		</layout>
 	</appender>
 
-	<logger name="org.application">
-		<level value="info" />
-	</logger>
 
 	<logger name="org.springframework.core">
 		<level value="info" />
