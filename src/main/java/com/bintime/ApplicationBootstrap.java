@@ -49,7 +49,7 @@ public class ApplicationBootstrap implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         if (db.contains("create")){
             initUsers();
-            //initProducts();
+            initProducts();
         }
     }
 

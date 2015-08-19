@@ -9,9 +9,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Protocol;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +39,7 @@ public class RedisService {
     private static final String OFFER_KEY = "offer:";
     private static final String PRODUCT_KEY = "product:";
 
-    private JedisPool jedisPool;
+    private static JedisPool jedisPool;
 
     @PostConstruct
     public void initJedisPool(){
@@ -44,6 +48,14 @@ public class RedisService {
         config.setMaxIdle(63);
         config.setMinIdle(1);
         jedisPool = new JedisPool(config,redisHost,redisPort, 2000, redisPass);*/
+        try {
+            URI redisURI = new URI(System.getenv("REDISTOGO_URL"));
+            jedisPool = new JedisPool(new JedisPoolConfig(), redisURI.getHost(),
+                    redisURI.getPort(), Protocol.DEFAULT_TIMEOUT, redisURI.getUserInfo().split(":", 2)[1]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public Jedis getClient(){
