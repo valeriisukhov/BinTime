@@ -45,7 +45,7 @@
 					<option value="0" selected>No Sort</option>
 					<option value="1">Price up</option>
 					<option value="2">Price down</option>
-				</select>
+				</select>Ф
 			</div>
 			<div><input type="hidden"
 						id="csrf"
